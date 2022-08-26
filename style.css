@@ -3,23 +3,32 @@
     padding: 0;
 }
 
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
   }
 
 .container{
-    background-color: blueviolet;
-
     display: grid;
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     grid-template-rows: repeat(var(--grid-rows), 1fr);
+    width: 400px;
+    height: 400px;
 }
 
 .box{
     background-color: bisque;
+    min-height: 0.1px;
+    min-width: 0.1px;
 }
-
 .hovered{
     background-color: blueviolet;
 }
