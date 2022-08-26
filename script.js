@@ -2,15 +2,26 @@
 
 const container = document.querySelector('.container');
 
-function makeGrid(rows,cols){
+function createCanvas(rows,cols){
     container.style.setProperty('--grid-rows', rows);
     container.style.setProperty('--grid-cols', cols);
     for(c = 0; c < (rows * cols); c++){
         let box = document.createElement('div');
         box.innerText = (c + 1);
         container.appendChild(box).className = 'box';
+
+        //Change div color when hovered
+        box.addEventListener('mouseenter', function (e){
+            e.target.style.background = 'blue';
+        })
     }
 }
 
-makeGrid(16,16);
+createCanvas(16,16);
+
+
+
+
+
+
 

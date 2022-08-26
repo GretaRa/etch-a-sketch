@@ -19,3 +19,7 @@
 .box{
     background-color: bisque;
 }
+
+.hovered{
+    background-color: blueviolet;
+}
