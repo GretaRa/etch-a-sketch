@@ -9,8 +9,9 @@ resetBtn.addEventListener('click', () => {
 
     if (cols > 100 || cols < 1 || rows > 100 || rows < 1){
         alert('Choose a number between 1 and 100');
-        return;
+        return
     } else {
+        location.reload();
         createCanvas(rows, cols);
     }
 })
