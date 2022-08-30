@@ -8,7 +8,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 1rem;
+    background-color: #dad5d5;
 }
 
 :root {
@@ -25,10 +26,25 @@ body{
 }
 
 .box{
-    background-color: bisque;
+    background-color: #fff;
     min-height: 0.1px;
     min-width: 0.1px;
 }
-.hovered{
-    background-color: blueviolet;
+
+.resetBtn,
+.submitBtn{
+    padding: 0.5rem 1rem;
+    background-color: #fff;
 }
+
+.controls{
+    display: flex;
+    gap: 6rem;
+    margin-top: 100px;
+}
+
+.form{
+    display: flex;
+    gap: 50px;
+}
+

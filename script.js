@@ -1,24 +1,58 @@
+const controls = document.createElement('div');
+controls.classList.add('controls');
+document.body.insertBefore(controls, document.body.children[0]);
+
+
+
 //Create reset button in HTML
 const resetBtn = document.createElement('button');
 resetBtn.innerHTML = 'Reset';
-document.body.insertBefore(resetBtn, document.body.children[0]).className = 'resetBtn';
+resetBtn.classList.add('resetBtn');
+controls.appendChild(resetBtn);
 
+
+//Reset button refreshes grid to draw again
 resetBtn.addEventListener('click', () => {
-    let rows = Number(prompt('Please choose canvas width between 1 and 100 squares', 16));
-    let cols = Number(prompt('Please choose canvas height between 1 and 100 squares', 16));
-
-    if (cols > 100 || cols < 1 || rows > 100 || rows < 1){
-        alert('Choose a number between 1 and 100');
-        return
-    } else {
-        location.reload();
-        createCanvas(rows, cols);
-    }
+    location.reload();
 })
+
+//Container for input form
+const form = document.createElement('div');
+form.classList.add('form');
+controls.appendChild(form);
+
+//Size input
+const sizeInput = document.createElement('input');
+sizeInput.setAttribute("type", "number");
+sizeInput.setAttribute("min", "10");
+sizeInput.setAttribute("max", "100");
+sizeInput.setAttribute("value", "16");
+sizeInput.classList.add('sizeInput');
+form.appendChild(sizeInput);
+
+
+//Submit button 
+const submitBtn = document.createElement('input');
+submitBtn.setAttribute("type", "submit");
+submitBtn.setAttribute('value', 'Submit');
+submitBtn.classList.add('submitBtn');
+form.appendChild(submitBtn);
+
+
+//Take size input to adapt grid size
+submitBtn.addEventListener('click', () => {
+    let rows,cols;
+    rows = cols = sizeInput.value;
+    if (rows > 100){
+        alert('Choose the grid size between 10 and 100')
+    } else {
+        createCanvas(rows,cols);
+    }
+});
 
 const container = document.querySelector('.container');
 
-//Create a webpage with a 16x16 grid of square divs
+//Create a webpage with a grid of square divs
 function createCanvas(rows,cols){
     container.style.setProperty('--grid-rows', rows);
     container.style.setProperty('--grid-cols', cols);
@@ -29,7 +63,7 @@ function createCanvas(rows,cols){
 
         //Change div color when hovered
         box.addEventListener('mouseenter', function (e){
-            e.target.style.background = 'blue';
+            e.target.style.background = 'coral';
         })
     }
 }
