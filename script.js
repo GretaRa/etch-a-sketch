@@ -1,14 +1,17 @@
 //TODO
-//Draw only when holding mouse key
 //Change colors
 //Make a slider for size
 //Add a title
 //Style it
 
+const title = document.createElement('h1');
+title.textContent = 'Etch-a-sketch';
+document.body.insertBefore(title, document.body.children[0]);
+
 //Create a container for controls
 const controls = document.createElement('div');
 controls.classList.add('controls');
-document.body.insertBefore(controls, document.body.children[0]);
+document.body.insertBefore(controls, document.body.children[1]);
 
 //Create reset button in HTML
 const resetBtn = document.createElement('button');
@@ -108,7 +111,11 @@ function createCanvas(rows,cols){
     for(c = 0; c < (rows * cols); c++){
         let box = document.createElement('div');
         box.innerText = ('');
-        container.appendChild(box).className = 'box';
+        box.classList.add('box');
+        //fix the browser allowing dragging of boxes
+        box.classList.add('unselectable');
+        
+        container.appendChild(box)
 
         //Change div color when pressed and hold
         box.addEventListener('mouseover', changeColor);
