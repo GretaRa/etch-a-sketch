@@ -24,6 +24,7 @@ body{
     width: 600px;
     height: 600px;
     cursor: default;
+    border: 2px black solid;
 }
 
 .box{
