@@ -21,30 +21,35 @@ body{
     display: grid;
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     grid-template-rows: repeat(var(--grid-rows), 1fr);
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
 }
 
 .box{
     background-color: #fff;
-    min-height: 0.1px;
-    min-width: 0.1px;
 }
 
 .resetBtn,
 .submitBtn{
     padding: 0.5rem 1rem;
     background-color: #fff;
+    font-size: 1.1rem;
 }
 
 .controls{
     display: flex;
-    gap: 6rem;
-    margin-top: 100px;
+    gap: 13rem;
+    margin-top: 8rem;
 }
 
 .form{
     display: flex;
-    gap: 50px;
+    gap: 1rem;
+    align-items: flex-end;
+    font-size: 1.3rem;
+}
+
+input{
+    font-size: 1.1rem;
 }
 

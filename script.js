@@ -1,15 +1,20 @@
+//TODO
+//Draw only when holding mouse key
+//Change colors
+//Make a slider for size
+//Add a title
+//Style it
+
+//Create a container for controls
 const controls = document.createElement('div');
 controls.classList.add('controls');
 document.body.insertBefore(controls, document.body.children[0]);
-
-
 
 //Create reset button in HTML
 const resetBtn = document.createElement('button');
 resetBtn.innerHTML = 'Reset';
 resetBtn.classList.add('resetBtn');
 controls.appendChild(resetBtn);
-
 
 //Reset button refreshes grid to draw again
 resetBtn.addEventListener('click', () => {
@@ -21,14 +26,48 @@ const form = document.createElement('div');
 form.classList.add('form');
 controls.appendChild(form);
 
-//Size input
-const sizeInput = document.createElement('input');
-sizeInput.setAttribute("type", "number");
-sizeInput.setAttribute("min", "10");
-sizeInput.setAttribute("max", "100");
-sizeInput.setAttribute("value", "16");
-sizeInput.classList.add('sizeInput');
-form.appendChild(sizeInput);
+//container for rows input
+const containerRows = document.createElement('div');
+containerRows.classList.add('containerRows');
+form.appendChild(containerRows);
+
+//Text rows input
+const textRows = document.createElement('p');
+textRows.textContent = 'Rows';
+containerRows.appendChild(textRows);
+
+//Size input rows
+const sizeRows = document.createElement('input');
+sizeRows.setAttribute("type", "number");
+sizeRows.setAttribute("min", "2");
+sizeRows.setAttribute("max", "100");
+sizeRows.setAttribute("value", "16");
+sizeRows.classList.add('sizeRows');
+containerRows.appendChild(sizeRows);
+
+//Add x
+const text = document.createElement('p');
+text.textContent = 'X';
+form.appendChild(text);
+
+//container for cols input
+const containerCols = document.createElement('div');
+containerCols.classList.add('containerCols');
+form.appendChild(containerCols);
+
+//Text cols input
+const textCols = document.createElement('p');
+textCols.textContent = 'Columns';
+containerCols.appendChild(textCols);
+
+//Size input cols
+const sizeCols = document.createElement('input');
+sizeCols.setAttribute("type", "number");
+sizeCols.setAttribute("min", "2");
+sizeCols.setAttribute("max", "100");
+sizeCols.setAttribute("value", "16");
+sizeCols.classList.add('sizeCols');
+containerCols.appendChild(sizeCols);
 
 
 //Submit button 
@@ -39,17 +78,18 @@ submitBtn.classList.add('submitBtn');
 form.appendChild(submitBtn);
 
 
-//Take size input to adapt grid size
+//Consider size input to adapt grid size
 submitBtn.addEventListener('click', () => {
-    let rows,cols;
-    rows = cols = sizeInput.value;
-    if (rows > 100){
-        alert('Choose the grid size between 10 and 100')
+    let rows = sizeRows.value;
+    let cols = sizeCols.value;
+    if (rows > 100 || cols >100 || rows < 2 || cols < 2){
+        alert('Choose between 2 and 100 number of rows and colums');
     } else {
         createCanvas(rows,cols);
     }
 });
 
+//Recoginse container for the grid
 const container = document.querySelector('.container');
 
 //Create a webpage with a grid of square divs
@@ -63,10 +103,12 @@ function createCanvas(rows,cols){
 
         //Change div color when hovered
         box.addEventListener('mouseenter', function (e){
-            e.target.style.background = 'coral';
+            e.target.style.background = '#'+(0x1000000+Math.random()*0xffffff).toString(16).substr(1,6);
         })
     }
 }
+
+//Default grid
 createCanvas(16,16);
 
 
