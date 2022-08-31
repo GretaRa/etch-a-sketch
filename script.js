@@ -92,6 +92,15 @@ submitBtn.addEventListener('click', () => {
 //Recoginse container for the grid
 const container = document.querySelector('.container');
 
+
+let mouseDown = false;
+document.body.onmousedown = function() {
+mouseDown = true;
+};
+document.body.onmouseup = function() {
+mouseDown = false;
+};
+
 //Create a webpage with a grid of square divs
 function createCanvas(rows,cols){
     container.style.setProperty('--grid-rows', rows);
@@ -101,16 +110,25 @@ function createCanvas(rows,cols){
         box.innerText = ('');
         container.appendChild(box).className = 'box';
 
-        //Change div color when hovered
-        box.addEventListener('mouseenter', function (e){
-            e.target.style.background = '#'+(0x1000000+Math.random()*0xffffff).toString(16).substr(1,6);
-        })
+        //Change div color when pressed and hold
+        box.addEventListener('mouseover', changeColor);
+        box.addEventListener('mousedown', changeColor);
     }
 }
 
 //Default grid
 createCanvas(16,16);
 
+
+function changeColor(e) {
+    if (mouseDown) {
+      let color1 = Math.floor(Math.random() * 256);
+      let color2 = Math.floor(Math.random() * 256);
+      let color3 = Math.floor(Math.random() * 256);
+  
+      e.target.style.backgroundColor = `rgb(${color1},${color2},${color3})`;
+    }
+  }
 
 
 
