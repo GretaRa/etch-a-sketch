@@ -1,8 +1,3 @@
-//TODO
-//Change colors
-//Make a slider for size
-//Add a title
-//Style it
 
 const title = document.createElement('h1');
 title.textContent = 'Etch-a-sketch';
